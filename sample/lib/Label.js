@@ -17,6 +17,7 @@ export class Label extends Node {
       this.elm.innerHTML = 'YOU WIN';
     } else if (value === 0) {
       this.elm.innerHTML = 'YOU LOSE';
+      process.exit(1);
     } else {
       this.elm.innerText = 'Score: ' + this._score;
     }

@@ -58,24 +58,20 @@ export class Game extends Node {
             if (this.countClick === 2) {
                 setTimeout(() => {
                     if (this.firstCard.bg === this.secondCard.bg) {
-                        this.firstCard.width = 0;
-                        this.firstCard.height = 0;
-                        this.secondCard.width = 0;
-                        this.secondCard.height = 0;
+                        this.firstCard.hidecard();
+                        this.secondCard.hidecard();
                         this.label.score += 1000;
                         this.countDone += 1;
                     } else {
-                        //this.firstCard.path = "./img/cardBg.jpg";
-                        //this.secondCard.path= "./img/cardBg.jpg";
                         this.firstCard.showCover();
                         this.secondCard.showCover();
-                        this.label.score -= 500;
+                        this.label.score -= 1000;
                     }
                     if (this.countDone === 10) {
                         this.label.score = 'Winner';
                     }
 
-                    this.countClick = 0;
+                    this.countClick = 0;    
                 }, 500);
             }
         }

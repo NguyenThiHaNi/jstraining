@@ -5,11 +5,34 @@ export class Node {
         this._y = 0;
         this._width = 0;
         this._height = 0;
+        this._zIndex = 0;
         this._active = true;
         this.children = [];
-     
+        this._opacity = 1;
+        this._scale = 1;
     }
-
+    get scale (){
+        return this._scale;
+    }
+    set scale(value){
+        this._scale= value;
+        this.elm.style.transform = `scale(${this._scale})`;
+    }
+    get zIndex (){
+        return this._zIndex;
+    }
+    set zIndex (value){
+        this._zIndex = value;
+        this.elm.style.zIndex = this._zIndex;
+    }
+    get opacity(){
+        return this._opacity;
+    
+    }
+    set opacity(value){
+        this._opacity = value;
+        this.elm.style.opacity = this._opacity;
+    }
     _initElement() {
         this.elm = document.createElement("div");
         this.elm.node = this;
