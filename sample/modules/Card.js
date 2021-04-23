@@ -6,7 +6,7 @@ export class Card extends Sprite {
         this.value = value;
         this.x = index * 100;
         this.y = value * 100;
-        this.x = index * 100 + 120;
+        this.x = index * 100 + 150;
         this.y = value * 100 + 50;
         this.width = 80;
         this.height = 80;

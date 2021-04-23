@@ -7,6 +7,7 @@ export class Label extends Node {
     this.x = 20;
     this.y = 50;
     this.elm.style.color = 'red';
+    this.elm.style.fontSize = "20px";
   }
   get score() {
     return this._score;
@@ -17,9 +18,9 @@ export class Label extends Node {
       this.elm.innerHTML = 'YOU WIN';
     } else if (value === 0) {
       this.elm.innerHTML = 'YOU LOSE';
-      process.exit(1);
+      //process.exit(1);
     } else {
-      this.elm.innerText = 'Score: ' + this._score;
+      this.elm.innerText = 'SCORE: ' + this._score;
     }
   }
 }

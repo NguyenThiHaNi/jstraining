@@ -1,13 +1,14 @@
 import { Label } from "../lib/Label.js";
 import { Node } from "../lib/Node.js";
 import { Card } from "../modules/Card.js";
+import {Button} from "../lib/Button.js";
 export class Game extends Node {
 
     init() {
         this._initSize();
-        this._initCards();
+        //this._initCards();
         this._initScore();
-
+        this._initButton();
         this.countClick = 0;
         this.countDone = 0;
         this.firstCard = null;
@@ -19,6 +20,16 @@ export class Game extends Node {
         this.height = 480;
         this.elm.style.backgroundImage = "url(./img/trucxanh_bg.jpg)";
         this.elm.style.border = "1px solid red";
+    }
+    _initButton(){
+        this.btn = new Button();
+        this.addChild(this.btn);
+        this.btn.elm.innerHTML =" BẮT ĐẦU ";
+        this.btn.elm.onclick = () => {
+            this._initCards();
+            this.label.score = 10000;
+            this.countDone = 0;
+        }
     }
 
     _initScore() {
@@ -40,6 +51,9 @@ export class Game extends Node {
     }
 
     onClickCard(evt) {
+        if(this.label.score === 0 || this.countDone === 10){
+            return;
+        }
         this.countClick++;
         let card = evt.target.node;
 
@@ -65,10 +79,13 @@ export class Game extends Node {
                     } else {
                         this.firstCard.showCover();
                         this.secondCard.showCover();
-                        this.label.score -= 1000;
+                        this.label.score -= 2000;
                     }
                     if (this.countDone === 10) {
                         this.label.score = 'Winner';
+                    }
+                    if (this.label.score === 0){
+                        this.btn.setName("CHƠI LẠI");
                     }
 
                     this.countClick = 0;    
